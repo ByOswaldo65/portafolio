@@ -19,8 +19,8 @@ function inicio() {
 
         if (!valid) {
             localStorage.setItem("colorSelected", "azul");
-            localStorage.setItem("colorHex", "#0bb5e2");
-            localStorage.setItem("colorBit", "0x0BB5E2");
+            localStorage.setItem("colorHex", "#0ea5e9");
+            localStorage.setItem("colorBit", "0x0ea5e9");
             localStorage.setItem("isDarkMode", "false");
         }
 
