@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en" class="overflow-x-hidden scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./src/assets/img/logo.png" type="image/png" />
+    <title>Portafolio de Pedro Benitez | Desarrollador Frontend</title>
+    <link rel="stylesheet" href="./src/styles/mainStyle.css">
+    <link rel="stylesheet" href="./src/styles/customSwitch.css">
+    <link rel="stylesheet" href="./src/styles/loader.css">
+    <script src="./src/js/tailwindcss.js"></script>
+</head>
+
+<body class="min-h-screen overflow-x-hidden text-[#2b2928] changeMode">
+    <div id="Loader" class="h-dvh w-dvw fixed bg-[#000000] z-90">
+        <div class="banter-loader">
+            <div class="banter-loader__box"></div>
+            <div class="banter-loader__box"></div>
+            <div class="banter-loader__box"></div>
+            <div class="banter-loader__box"></div>
+            <div class="banter-loader__box"></div>
+            <div class="banter-loader__box"></div>
+            <div class="banter-loader__box"></div>
+            <div class="banter-loader__box"></div>
+            <div class="banter-loader__box"></div>
+        </div>
+    </div>
+
+    <button id="btnToTop" onclick="scrollToTop()" class="changeMode changeMode-border-form changeMode-hover-bg opacity-0 pointer-events-none fixed right-3 bottom-3 sm:right-6 sm:bottom-6 p-3 border-1 rounded-full cursor-pointer transition-opacity duration-300 z-50">
+        <svg class="w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 18.75 7.5-7.5 7.5 7.5" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 7.5-7.5 7.5 7.5" />
+        </svg>
+    </button>        
+
+    <header class="flex justify-center items-center max-h-fit px-4 sm:px-6 md:px-8 lg:px-12 py-4 fixed top-0 left-0 right-0 border-t-1 sm:border-t-0 sm:border-b-1 font-inter z-50 opacity-0 animate-fadeInBottom custom-p-header custom-position-header changeMode changeMode-border">
+        <div class="flex justify-between items-center relative w-full">            
+            <div class="flex justify-center items-center max-w-fit changeMode">
+                <img src="./src/assets/img/logo.png" id="logo" class="w-6 mr-2 custom-hidden" loading="lazy" alt="Pedro Benitez">
+                <p class="hidden sm:flex text-md font-medium">Pedro Benitez</p>
+            </div>
+
+            <nav class="flex justify-center items-center max-w-fit gap-0 text-md custom-w changeMode">
+                <a href="#" class="px-4 py-2 rounded-md custom-p-icon custom-hidden-icon changeMode-hover-bg">
+                    <svg class="w-6 custom-hidden-icon aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                    </svg>                                    
+                </a>
+                <a href="#mainContainer" class="px-4 py-2 rounded-md custom-p-icon changeMode-hover-bg">
+                    <p class="custom-hidden">Sobre mí</p>
+                    <svg class="w-6 custom-hidden-icon aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                    </svg>
+                </a>
+                <a href="#mainProject" class="px-4 py-2 rounded-md custom-p-icon changeMode-hover-bg">
+                    <p class="custom-hidden">Proyectos</p>
+                    <svg class="w-6 custom-hidden-icon aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z" />
+                    </svg>
+                </a>
+                <a href="#mainContact" class="px-4 py-2 mr-2 rounded-md custom-p-icon changeMode-hover-bg">
+                    <p class="custom-hidden">Contacto</p>
+                    <svg class="w-6 custom-hidden-icon aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+                    </svg>
+                </a>
+                <button id="btnConfig" class="pl-2 border-l-1 cursor-pointer changeMode-border">
+                    <svg class="min-w-11 min-h-11 aspect-square p-2 rounded-md changeMode-hover-bg" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    </svg>
+                </button>
+            </nav>
+
+            <div id="menuChange" class="changeMode changeMode-shadow custom-mb-menuChange flex flex-col absolute top-full right-0 p-6 mt-[17px] gap-4 rounded-xl z-40 transition-[max-height,opacity] duration-200 overflow-hidden max-h-0 display-none opacity-0 pointer-events-none custom-positon-modeMenu">
+                <div class="flex justify-end items-center pb-4 border-b-1 changeMode-border">
+                    <button id="btnConfig" class="flex justify-center items-center cursor-pointer">
+                        <svg class="min-w-7 min-h-7 p-1 pt-[5px] pr-[5px] mr-2 rounded-md changeMode-hover-bg"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                        </svg>
+                    </button>
+                    <h1 class="text-md">Cambiar apariencia</h1>
+                </div>
+                <div class="flex justify-between items-center pb-4 border-b-1 changeMode-border">
+                    <p class="text-sm">Modo oscuro</p>
+                    <label onchange="changeMode()" id="btnModeChange" class="switch">
+                        <input id="ckbMode" type="checkbox">
+                        <span class="slider flex justify-between items-center px-2">
+                            <div class="sun">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                    class="w-[13px] h-[13px] text-offwhite border-none">
+                                    <path
+                                        d="M12 23V22M4.22183 19.7782L4.92893 19.0711M1 12H2M4.22183 4.22183L4.92893 4.92893M12 2V1M19.0711 4.92893L19.7782 4.22183M22 12H23M19.0711 19.0711L19.7782 19.7782M18 12C18 15.3137 15.3137 18 12 18C8.68629 18 6 15.3137 6 12C6 8.68629 8.68629 6 12 6C15.3137 6 18 8.68629 18 12Z"
+                                        stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round"></path>
+                                </svg>
+                            </div>
+                            <div class="moon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                    class="w-[14px] h-[14px] text-gray-500 border-none">
+                                    <path
+                                        d="M21 13.9066C19.805 14.6253 18.4055 15.0386 16.9095 15.0386C12.5198 15.0386 8.9612 11.4801 8.9612 7.09034C8.9612 5.59439 9.37447 4.19496 10.0931 3C6.03221 3.91866 3 7.5491 3 11.8878C3 16.9203 7.07968 21 12.1122 21C16.451 21 20.0815 17.9676 21 13.9066Z"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round"></path>
+                                </svg>
+                            </div>
+                        </span>
+                    </label>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex justify-between items-center">
+                        <p class="text-sm">Color del tema</p>
+                        <svg class="w-[18px] h-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M4.098 19.902a3.75 3.75 0 0 0 5.304 0l6.401-6.402M6.75 21A3.75 3.75 0 0 1 3 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 0 0 3.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008Z" />
+                        </svg>
+                    </div>
+                    <div class="flex flex-col gap-3">
+                        <div id="verde" 
+                            class="btnColor flex justify-between items-center p-2 border-1 rounded-lg bg-[#1d9f0c]/10 hover:bg-[#1d9f0c]/15 border-[#1d9f0c]/40 transition-colors duration-100 cursor-pointer" 
+                            data-hex="#1d9f0c" data-bit="0x1d9f0c" data-color-selected="verde">
+                            <p class="text-sm text-[#1d9f0c]">Verde</p>
+                            <div class="h-2.5 w-2.5 rounded-full bg-[#1d9f0c]"></div>
+                        </div>
+                        <div id="azul"
+                            class="btnColor borderNormal-azul flex justify-between items-center w-full p-2 border-1 rounded-lg bg-[#0EA5E9]/10 hover:bg-[#0EA5E9]/15 transition-colors duration-100 cursor-pointer"
+                            data-hex="#0EA5E9" data-bit="0x0EA5E9" data-color-selected="azul">
+                            <p class="text-sm text-[#0EA5E9]">Azul</p>
+                            <div class="h-2.5 w-2.5 rounded-full bg-[#0EA5E9]"></div>
+                        </div>
+                        <div id="morado"
+                            class="btnColor borderNormal-morado flex justify-between items-center w-full p-2 border-1 rounded-lg bg-[#9333EA]/10 hover:bg-[#9333EA]/15 transition-colors duration-100 cursor-pointer"
+                            data-hex="#9333EA" data-bit="0x9333EA" data-color-selected="morado">
+                            <p class="text-sm text-[#9333EA]">Morado</p>
+                            <div class="h-2.5 w-2.5 rounded-full bg-[#9333EA]"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex justify-center items-center h-dvh max-h-dvh min-h-[489px] relative overflow-hidden">
+        <div id="mainFondo" class="h-full w-full absolute inset-0 bg-cover bg-center z-[-1]"></div>
+
+        <div class="changeMode changeMode-shadow flex flex-col relative w-dvw max-w-5xl px-4 sm:px-6 lg:px-8 py-12 mt-18 custom-m-container gap-6 rounded-0 sm:rounded-xl font-inter z-10 opacity-0 animate-fadeIn">
+            <div class="flex flex-col gap-2 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-[400]">
+                <h1>Desarrollador</h1>
+                <h1 class="font-bold changeColor">Frontend</h1>
+            </div>
+            <div class="flex flex-col gap-6 sm:gap-8">
+                <p id="mainText" class="max-w-prose text-base sm:text-lg"></p>
+                <a href="#mainContainer" class="custom-margin-top changeMode-hover-bg changeMode-border-form flex w-fit px-4 py-3 mt-4 gap-2 border-1 rounded-lg cursor-pointer">
+                    <p class="text-sm sm:text-base">Seguir explorando</p>
+                    <svg class="w-4 sm:w-5 mt-[1px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5" />
+                    </svg>
+                </a>
+            </div>
+            <div class="flex flex-col gap-2">
+                <p class="mt-6 ml-1 text-sm changeMode-back-text">Construido con</p>
+                <div class="flex justify-start items-center gap-2 mt-2">
+                    <p class="py-1 px-3 rounded-lg text-xs border changeMode changeMode-border changeMode-back-text">HTML</p>
+                    <p class="py-1 px-3 rounded-lg text-xs border changeMode changeMode-border changeMode-back-text">CSS</p>
+                    <p class="py-1 px-3 rounded-lg text-xs border changeMode changeMode-border changeMode-back-text">JavaScript</p>
+                    <p class="py-1 px-3 rounded-lg text-xs border changeMode changeMode-border changeMode-back-text">Tailwind</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mainContainer" class="custom-main-gap custom-mb-mainContainer scroll-main-offset flex flex-col w-dvw p-12 pt-12 sm:pt-18 lg:pt-24 px-4 sm:px-6 md:px-8 lg:px-12 gap-12 sm:gap-16 lg:gap-18">
+        <div id="sobreMi" class="flex justify-between gap-24 custom-wrap custom-gap">         
+            <div class="flex flex-col gap-6 max-w-2xl">
+                <div class="flex flex-col gap-2 text-5xl sm:text-6xl lg:text-7xl font-[400]">
+                    <h1>Hola, soy</h1>
+                    <h1 class="font-bold changeColor">Pedro Benitez</h1>
+                </div>
+                <p class="text-base">Estudiante de Ingeniería de Software en 8.º semestre, con experiencia en el desarrollo de soluciones web para instituciones y empresas. Me enfoco en crear experiencias centradas en las necesidades de los clientes, diseño, y desarrollo visual usando tecnologías modernas</p>
+                <div class="relative flex flex-col gap-2">
+                    <p class="changeMode-back-text ml-1 text-sm">Trabajo con herramientas como</p>
+                    <div class="flex flex-wrap justify-start items-center max-w-full sm:max-w-2/3 gap-2 mt-2">
+                        <p class="changeMode changeMode-border changeMode-back-text py-1 px-3 rounded-lg text-xs border">HTML</p>
+                        <p class="changeMode changeMode-border changeMode-back-text py-1 px-3 rounded-lg text-xs border">CSS</p>
+                        <p class="changeMode changeMode-border changeMode-back-text py-1 px-3 rounded-lg text-xs border">JavaScript</p>
+                        <p class="changeMode changeMode-border changeMode-back-text py-1 px-3 rounded-lg text-xs border">PHP</p>                       
+                        <p class="changeMode changeMode-border changeMode-back-text py-1 px-3 rounded-lg text-xs border">Figma</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="custom-img-flex-col flex h-fit w-full p-2 gap-2 border-1 rounded-2xl changeMode-border">
+                <div class="relative h-[420px] w-full">
+                    <img class="changeMode-img absolute h-full w-full object-cover rounded-xl" src="./src/assets/img/me.jpg" loading="lazy" alt="Portafolio de Pedro Benitez" />
+                </div>
+                <div class="flex flex-col justify-between">
+                    <div class="flex flex-col p-2 gap-3">
+                        <div class="flex flex-col">
+                            <h1 class="text-base font-[600]">Pedro Benitez</h1>
+                            <h2 class="text-sm changeMode-back-text">Desarrollador Junior • Frontend • UX/UI</h2>
+                        </div>
+                        <p class="text-sm">Apasionado por crear interfaces claras, accesibles y centradas en el usuario</p>
+                        <div class="flex flex-wrap gap-2">
+                            <div class="changeMode-border flex gap-1.5 pr-2.5 border-r-1 text-xs">
+                                <svg class="w-4 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z"></path>
+                                </svg>
+                                <p>+10 proyectos</p>
+                            </div>
+                            <div class="changeMode-border flex gap-1.5 text-xs">
+                                <svg class="w-4 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                </svg>
+                                <p>+1 año de experiencia</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-2 mt-1">
+                            <p class="changeMode-back-text ml-1 text-sm">Resumen de habilidades</p>
+                            <div class="flex flex-wrap gap-2 mt-2">
+                                <div class="hidden sm:flex changeMode-border changeMode-back-text flex py-1 px-3 gap-1.5 border rounded-lg text-xs">
+                                    <svg class="w-4 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z" />
+                                    </svg>                                
+                                    <p>Diseño</p>
+                                </div>
+                                <div class="changeMode-border changeMode-back-text flex py-1 px-3 gap-1.5 border rounded-lg text-xs">
+                                    <svg class="w-4 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z" />
+                                    </svg>
+                                    <p>Diseño responsivo</p>
+                                </div>
+                                <div class="changeMode-border changeMode-back-text flex py-1 px-3 gap-1.5 border rounded-lg text-xs">
+                                    <svg class="w-4 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z" />
+                                    </svg>
+                                    <p>Maquetación</p>
+                                </div>
+                                <div class="changeMode-border changeMode-back-text flex py-1 px-3 gap-1.5 border rounded-lg text-xs">
+                                    <svg class="w-4 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+                                    </svg>
+                                    <p>Trabajo colaborativo</p>
+                                </div>
+                                <div class="hidden sm:flex changeMode-border changeMode-back-text flex py-1 px-3 gap-1.5 border rounded-lg text-xs">
+                                    <svg class="w-4 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+                                    </svg>
+                                    <p>Adaptabilidad</p>
+                                </div>
+                                <div class="changeMode-border changeMode-back-text flex py-1 px-3 gap-1.5 border rounded-lg text-xs">
+                                    <svg class="w-4 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+                                    </svg>
+                                    <p>Compromiso</p>
+                                </div>
+                            </div>
+                        </div>                            
+                    </div>
+                    <a href="#mainContact" class="changeMode changeMode-border-form changeMode-hover-bg mt-6 mb-1 px-4 py-2 border-1 rounded-lg cursor-pointer">
+                        <p class="mb-[1px] text-sm text-center">Contáctame</p>
+                    </a>               
+                </div>          
+            </div>
+        </div>
+
+        <div id="mainProject" class="custom-wrap custom-gap scroll-offset flex justify-between pt-12 gap-24">
+            <div class="flex flex-col gap-6 max-w-2xl">
+                <div class="flex flex-col gap-2 text-5xl sm:text-6xl lg:text-7xl font-[400]">
+                    <h1>Proyectos</h1>
+                    <h1 class="font-bold changeColor">Destacados</h1>
+                </div>
+                <p class="text-base">Selección de proyectos web donde apliqué mis habilidades en diseño, desarrollo y experiencia de usuario, desde plataformas institucionales hasta soluciones de comercio electrónico</p>
+                <button onclick="showElement('hiddenElement')" class="custom-margin-top changeMode-border-form changeMode-hover-bg flex w-fit px-4 py-3 mt-4 gap-2 border-1 rounded-lg cursor-pointer">
+                    <p class="text-sm sm:text-base">Ver todos los proyectos</p>
+                    <svg class="w-4 sm:w-5 mt-[1px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 4.5 15 15m0 0V8.25m0 11.25H8.25" />
+                    </svg>
+                </button>
+            </div>
+            <div class="flex justify-start flex-wrap sm:flex-nowrap gap-6">
+                <div class="flex flex-col justify-start flex-1 min-w-[284px] p-2 gap-2 border-1 rounded-2xl cursor-pointer changeMode-border changeMode-hover-bg">
+                    <div class="w-full">
+                        <img class="rounded-xl" src="./src/assets/img/proyecto_tienda1.png" loading="lazy" alt="Portafolio de Pedro Benitez" />
+                    </div>
+                    <div class="flex flex-col p-2 gap-4">
+                        <div class="flex flex-col justify-center gap-2">
+                            <h1 class="text-base font-[600]">Tienda en línea para cliente del sector e-commerce</h1>
+                            <div class="flex items-center text-sm changeMode-back-text">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5" fill="none"
+                                    viewBox="0 0 24 24" stroke-width="1" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                                </svg>
+                                <p>Mayo 2024</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col justify-center relative gap-4">
+                            <div class="text-sm" onclick="toggleText(this)">
+                                <span id="desc" class="clamp-text inline">
+                                    Diseñé y desarrollé una plataforma de comercio electrónico con panel de administración y catálogo de productos. Me enfoqué en accesibilidad, estructura visual clara y experiencia fluida
+                                </span>
+                                <span id="seeMore" class="seeMore cursor-pointer changeMode-back-text">ver más</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center text-[12px] gap-3">
+                                    <p class="border-r-1 pr-3 changeMode-border">HTML</p>
+                                    <p class="border-r-1 pr-3 changeMode-border">CSS</p>
+                                    <p class="border-r-1 pr-3 changeMode-border">PHP</p>
+                                    <p>jQuery</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col justify-start flex-1 min-w-[284px] p-2 gap-2 border-1 rounded-2xl cursor-pointer changeMode-border changeMode-hover-bg">
+                    <div class="w-full">
+                        <img class="rounded-xl" src="./src/assets/img/proyecto_karaoke1.png" loading="lazy" alt="Portafolio de Pedro Benitez" />
+                    </div>
+                    <div class="flex flex-col p-2 gap-4">
+                        <div class="flex flex-col justify-center gap-2">
+                            <h1 class="text-base font-[600]">Gestor web para canciones en plataforma tipo karaoke</h1>
+                            <div class="flex items-center text-sm changeMode-back-text">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5" fill="none"
+                                    viewBox="0 0 24 24" stroke-width="1" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                                </svg>
+                                <p>Junio 2024</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col justify-center gap-4">
+                            <div class="text-sm" onclick="toggleText(this)">
+                                <span id="desc" class="clamp-text inline">
+                                    Creé una solución web para que los usuarios pudieran registrarse y enviar canciones a una plataforma de tipo karaoke. Priorizando la simplicidad en la interacción y claridad en la interfaz                                </span>
+                                <span id="seeMore" class="seeMore cursor-pointer changeMode-back-text">ver más</span>
+                            </div>                            
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center text-[12px] gap-3">
+                                    <p class="border-r-1 pr-3 changeMode-border">HTML</p>
+                                    <p class="border-r-1 pr-3 changeMode-border">CSS</p>
+                                    <p class="border-r-1 pr-3 changeMode-border">PHP</p>
+                                    <p>jQuery</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="hiddenElement" class="hidden scroll-offset pt-12">
+            <div class="custom-gap flex flex-col gap-6 sm:gap-8">
+                <div class="flex flex-col gap-6">
+                    <div class="flex flex-col gap-2 text-5xl sm:text-6xl lg:text-7xl font-[400]">
+                        <h1>Otros</h1>
+                        <h1 class="font-bold changeColor">Proyectos</h1>
+                    </div>
+                    <div class="flex justify-between items-end custom-flex-col">
+                        <p class="text-base max-w-xl">Proyectos adicionales que refuerzan mi perfil como desarrollador frontend, enfocados en resolver necesidades reales mediante interfaces accesibles y diseño centrado en el usuario</p>
+                        <button onclick="hiddenElement('hiddenElement', 'mainProject')" class="custom-margin-y changeMode-border-form changeMode-hover-bg flex w-fit px-4 py-3 mt-4 gap-2 border-1 rounded-lg cursor-pointer">                
+                            <svg class="w-4 sm:w-5 mt-[1px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 19.5-15-15m0 0v11.25m0-11.25h11.25" />
+                            </svg>
+                            <p class="text-sm sm:text-base">Ver menos proyectos</p>                
+                        </button>
+                    </div>
+                </div>
+                <div class="flex justify-start flex-wrap gap-6">
+                    <div class="flex flex-col justify-start min-w-[290px] basis-1/5 grow p-2 gap-2 border-1 rounded-2xl cursor-pointer changeMode-border changeMode-hover-bg">
+                        <div class="flex flex-col p-2 gap-4">
+                            <div class="flex flex-col justify-center gap-2">
+                                <h1 class="text-base font-[600]">Plataforma de gestión y creación de viajes</h1>
+                                <div class="flex items-center text-sm changeMode-back-text">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5" fill="none"
+                                        viewBox="0 0 24 24" stroke-width="1" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                                    </svg>
+                                    <p>Noviembre 2024</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col justify-center gap-4">
+                                <div class="text-sm" onclick="toggleText(this)">
+                                    <span id="desc" class="clamp-text inline">Desarrollé una solución web para crear, gestionar y visualizar viajes organizados por destino y actividades, mejorando la experiencia del usuario en la planeación de vacaciones</span>
+                                    <span id="seeMore" class="seeMore cursor-pointer changeMode-back-text">ver más</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center text-[12px] gap-3">
+                                        <p class="border-r-1 pr-3 changeMode-border">HTML</p>
+                                        <p class="border-r-1 pr-3 changeMode-border">CSS</p>
+                                        <p class="border-r-1 pr-3 changeMode-border">PHP</p>
+                                        <p>jQuery</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col justify-start min-w-[290px] basis-1/5 grow p-2 gap-2 border-1 rounded-2xl cursor-pointer changeMode-border changeMode-hover-bg">
+                        <div class="flex flex-col p-2 gap-4">
+                            <div class="flex flex-col justify-center gap-2">
+                                <h1 class="text-base font-[600]">Portal institucional de difusión turística y cultural</h1>
+                                <div class="flex items-center text-sm changeMode-back-text">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5" fill="none"
+                                        viewBox="0 0 24 24" stroke-width="1" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                                    </svg>
+                                    <p>Septiembre 2024</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col justify-center gap-4">                                
+                                <div class="text-sm" onclick="toggleText(this)">
+                                    <span id="desc" class="clamp-text inline">Desarrollé el diseño y estructura de un portal informativo para mostrar eventos, municipios y actividades de interés general, mejorando la navegación y el acceso</span>
+                                    <span id="seeMore" class="seeMore cursor-pointer changeMode-back-text">ver más</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center text-[12px] gap-3">
+                                        <p class="border-r-1 pr-3 changeMode-border">HTML</p>
+                                        <p class="border-r-1 pr-3 changeMode-border">CSS</p>
+                                        <p class="border-r-1 pr-3 changeMode-border">PHP</p>
+                                        <p>jQuery</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col justify-start min-w-[290px] basis-1/5 grow p-2 gap-2 border-1 rounded-2xl cursor-pointer changeMode-border changeMode-hover-bg">
+                        <div class="flex flex-col p-2 gap-4">
+                            <div class="flex flex-col justify-center gap-2">
+                                <h1 class="text-base font-[600]">Plataforma de cursos y certificaciones en línea</h1>
+                                <div class="flex items-center text-sm changeMode-back-text">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5" fill="none"
+                                        viewBox="0 0 24 24" stroke-width="1" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                                    </svg>
+                                    <p>Agosto 2024</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col justify-center gap-4">
+                                <div class="text-sm" onclick="toggleText(this)">
+                                    <span id="desc" class="clamp-text inline">Diseñé y desarrollé una interfaz de usuario para tomar cursos digitales con temas, videos, evaluaciones y seguimiento del progreso, enfocándome en usabilidad y navegación intuitiva</span>
+                                    <span id="seeMore" class="seeMore cursor-pointer changeMode-back-text">ver más</span>
+                                </div>                                
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center text-[12px] gap-3">
+                                        <p class="border-r-1 pr-3 changeMode-border">HTML</p>
+                                        <p class="border-r-1 pr-3 changeMode-border">CSS</p>
+                                        <p class="border-r-1 pr-3 changeMode-border">PHP</p>
+                                        <p>jQuery</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col justify-start min-w-[290px] basis-1/5 grow p-2 gap-2 border-1 rounded-2xl cursor-pointer changeMode-border changeMode-hover-bg">
+                        <div class="flex flex-col p-2 gap-4">
+                            <div class="flex flex-col justify-center gap-2">
+                                <h1 class="text-base font-[600]">Sistema de creación de formularios de satisfacción</h1>
+                                <div class="flex items-center text-sm changeMode-back-text">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5" fill="none"
+                                        viewBox="0 0 24 24" stroke-width="1" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                                    </svg>
+                                    <p>Agosto 2024</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col justify-center gap-4">
+                                <div class="text-sm" onclick="toggleText(this)">
+                                    <span id="desc" class="clamp-text inline">Implementé una plataforma para crear formularios dinámicos, centrada en la simplicidad de uso y una estructura visual clara para facilitar la recopilación de respuestas</span>
+                                    <span id="seeMore" class="seeMore cursor-pointer changeMode-back-text">ver más</span>
+                                </div>                                
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center text-[12px] gap-3">
+                                        <p class="border-r-1 pr-3 changeMode-border">HTML</p>
+                                        <p class="border-r-1 pr-3 changeMode-border">CSS</p>
+                                        <p class="border-r-1 pr-3 changeMode-border">PHP</p>
+                                        <p>jQuery</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col justify-start min-w-[290px] basis-1/5 grow p-2 gap-2 border-1 rounded-2xl cursor-pointer changeMode-border changeMode-hover-bg">
+                        <div class="flex flex-col p-2 gap-4">
+                            <div class="flex flex-col justify-center gap-2">
+                                <h1 class="text-base font-[600]">Sistema de registro de información de emergencia</h1>
+                                <div class="flex items-center text-sm changeMode-back-text">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5" fill="none"
+                                        viewBox="0 0 24 24" stroke-width="1" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                                    </svg>
+                                    <p>Julio 2024</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col justify-center gap-4">
+                                <div class="text-sm" onclick="toggleText(this)">
+                                    <span id="desc" class="clamp-text inline">Creé una interfaz web para que los usuarios registren datos personales críticos como tipo de sangre y contactos de emergencia, priorizando seguridad y claridad</span>
+                                    <span id="seeMore" class="seeMore cursor-pointer changeMode-back-text">ver más</span>
+                                </div>                               
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center text-[12px] gap-3">
+                                        <p class="border-r-1 pr-3 changeMode-border">HTML</p>
+                                        <p class="border-r-1 pr-3 changeMode-border">CSS</p>
+                                        <p class="border-r-1 pr-3 changeMode-border">PHP</p>
+                                        <p>jQuery</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col justify-start min-w-[290px] basis-1/5 grow p-2 gap-2 border-1 rounded-2xl cursor-pointer changeMode-border changeMode-hover-bg">
+                        <div class="flex flex-col p-2 gap-4">
+                            <div class="flex flex-col justify-center gap-2">
+                                <h1 class="text-base font-[600]">Sistema para gestión de trámites institucionales</h1>
+                                <div class="flex items-center text-sm changeMode-back-text">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5" fill="none"
+                                        viewBox="0 0 24 24" stroke-width="1" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                                    </svg>
+                                    <p>Marzo 2024</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col justify-center gap-4">
+                                <div class="text-sm" onclick="toggleText(this)">
+                                    <span id="desc" class="clamp-text inline">Desarrollé una solución web modular para digitalizar regulaciones y trámites administrativos, optimizando la experiencia del usuario con interfaces accesibles y eficientes</span>
+                                    <span id="seeMore" class="seeMore cursor-pointer changeMode-back-text">ver más</span>
+                                </div>                            
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center text-[12px] gap-3">
+                                        <p class="border-r-1 pr-3 changeMode-border">HTML</p>
+                                        <p class="border-r-1 pr-3 changeMode-border">CSS</p>
+                                        <p class="border-r-1 pr-3 changeMode-border">PHP</p>
+                                        <p>jQuery</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col justify-start min-w-[290px] basis-1/5 grow p-2 gap-2 border-1 rounded-2xl cursor-pointer changeMode-border changeMode-hover-bg">
+                        <div class="flex flex-col p-2 gap-4">
+                            <div class="flex flex-col justify-center gap-2">
+                                <h1 class="text-base font-[600]">Gestor web de estacionamientos e inventario</h1>
+                                <div class="flex items-center text-sm changeMode-back-text">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5" fill="none"
+                                        viewBox="0 0 24 24" stroke-width="1" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                                    </svg>
+                                    <p>Febrero 2024</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col justify-center gap-4">
+                                <div class="text-sm" onclick="toggleText(this)">
+                                    <span id="desc" class="clamp-text inline">Diseñé una interfaz unificada para gestionar entradas, salidas y inventario de productos. Me enfoqué en accesibilidad y visualización clara de datos</span>
+                                    <span id="seeMore" class="seeMore cursor-pointer changeMode-back-text">ver más</span>
+                                </div>                                
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center text-[12px] gap-3">
+                                        <p class="border-r-1 pr-3 changeMode-border">Figma</p>
+                                        <p>Bubble</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col justify-start min-w-[290px] basis-1/5 grow p-2 gap-2 border-1 rounded-2xl cursor-pointer changeMode-border changeMode-hover-bg">
+                        <div class="flex flex-col p-2 gap-4">
+                            <div class="flex flex-col justify-center gap-2">
+                                <h1 class="text-base font-[600]">Plataforma académica para gestión universitaria</h1>
+                                <div class="flex items-center text-sm changeMode-back-text">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5" fill="none"
+                                        viewBox="0 0 24 24" stroke-width="1" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                                    </svg>
+                                    <p>Diciembre 2023</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col justify-center gap-4">
+                                <div class="text-sm" onclick="toggleText(this)">
+                                    <span id="desc" class="clamp-text inline">Diseñé y desarrollé una plataforma tipo aula virtual para la gestión de cursos, tareas, temarios y alumnos, con enfoque en usabilidad, accesibilidad y necesidades institucionales</span>
+                                    <span id="seeMore" class="seeMore cursor-pointer changeMode-back-text">ver más</span>
+                                </div>                                
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center text-[12px] gap-3">
+                                        <p class="border-r-1 pr-3 changeMode-border">Figma</p>
+                                        <p>Bubble</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="mainTech" class="flex justify-between pt-12 gap-24 custom-wrap custom-gap">
+            <div class="flex flex-col gap-6 max-w-2xl">
+                <div class="flex flex-col gap-2 text-5xl sm:text-6xl lg:text-7xl font-[400]">
+                    <h1>Tecnologías y</h1>
+                    <h1 class="font-bold changeColor">Herramientas</h1>
+                </div>
+                <p class="text-base">Conjunto de tecnologías y herramientas que utilizo para diseñar y desarrollar soluciones web accesibles, funcionales y centradas en el usuario</p>                
+            </div>
+            <div class="custom-grid grid grid-cols-2 sm:grid-cols-2 lg:grid-rows-2 gap-8 h-fit w-full">
+                <div class="changeMode flex flex-col gap-4 rounded-lg">
+                    <div class="flex gap-2">
+                        <svg class="w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+                        </svg>
+                        <h1 class="mb-[1px] text-base font-[600]">Lenguajes</h1>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <svg class="w-10 h-10" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><g fill="none"><rect width="256" height="256" fill="#e14e1d" rx="60"/><path fill="#fff" d="m48 38l8.61 96.593h110.71l-3.715 41.43l-35.646 9.638l-35.579-9.624l-2.379-26.602H57.94l4.585 51.281l65.427 18.172l65.51-18.172l8.783-98.061H85.824l-2.923-32.71h122.238L208 38z"/><path fill="#ebebeb" d="M128 38H48l8.61 96.593H128v-31.938H85.824l-2.923-32.71H128zm0 147.647l-.041.014l-35.579-9.624l-2.379-26.602H57.94l4.585 51.281l65.427 18.172l.049-.014z"/></g></svg>
+                        <svg class="w-10 h-10" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><g fill="none"><rect width="256" height="256" fill="#0277bd" rx="60"/><path fill="#ebebeb" d="m53.753 102.651l2.862 31.942h71.481v-31.942zM128.095 38H48l2.904 31.942h77.191zm0 180.841v-33.233l-.14.037l-35.574-9.605l-2.274-25.476H58.042l4.475 50.154l65.431 18.164z"/><path fill="#fff" d="m167.318 134.593l-3.708 41.426l-35.625 9.616v33.231l65.483-18.148l.48-5.397l7.506-84.092l.779-8.578L208 38h-80.015v31.942h45.009l-2.906 32.709h-42.103v31.942z"/></g></svg>
+                        <svg class="w-10 h-10" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><g fill="none"><rect width="256" height="256" fill="#f0db4f" rx="60"/><path fill="#323330" d="m67.312 213.932l19.59-11.856c3.78 6.701 7.218 12.371 15.465 12.371c7.905 0 12.889-3.092 12.889-15.12v-81.798h24.058v82.138c0 24.917-14.606 36.259-35.916 36.259c-19.245 0-30.416-9.967-36.087-21.996m85.07-2.576l19.588-11.341c5.157 8.421 11.859 14.607 23.715 14.607c9.969 0 16.325-4.984 16.325-11.858c0-8.248-6.53-11.17-17.528-15.98l-6.013-2.579c-17.357-7.388-28.871-16.668-28.871-36.258c0-18.044 13.748-31.792 35.229-31.792c15.294 0 26.292 5.328 34.196 19.247l-18.731 12.029c-4.125-7.389-8.591-10.31-15.465-10.31c-7.046 0-11.514 4.468-11.514 10.31c0 7.217 4.468 10.139 14.778 14.608l6.014 2.577c20.449 8.765 31.963 17.699 31.963 37.804c0 21.654-17.012 33.51-39.867 33.51c-22.339 0-36.774-10.654-43.819-24.574"/></g></svg>
+                        <svg class="w-10 h-10" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><g fill="none"><rect width="256" height="256" fill="#242938" rx="60"/><path fill="#fff" d="M49.158 100.246h28.408q12.507.106 18.126 7.208q5.618 7.101 3.71 19.398q-.742 5.618-3.286 11.024q-2.438 5.406-6.784 9.752q-5.3 5.511-11.342 6.996q-6.043 1.484-12.508 1.484h-12.72l-4.028 20.14H34zM61.56 112.33l-6.36 31.8q.636.106 1.272.106h1.484q10.177.106 16.96-2.014q6.784-2.226 9.116-15.476q1.908-11.13-3.816-12.826q-5.618-1.695-14.098-1.59q-1.271.106-2.438.106h-2.226zM116.186 80h14.628l-4.134 20.246h13.144q10.811.213 16.112 4.452q5.406 4.24 3.18 16.112l-7.102 35.298h-14.84l6.784-33.708q1.059-5.3-.636-7.526t-7.314-2.226l-11.766-.106l-8.692 43.566h-14.628zm58.638 20.246h28.408q12.507.106 18.126 7.208q5.618 7.101 3.71 19.398q-.742 5.618-3.286 11.024q-2.438 5.406-6.784 9.752q-5.3 5.511-11.342 6.996q-6.043 1.484-12.508 1.484h-12.72l-4.028 20.14h-14.734zm12.402 12.084l-6.36 31.8q.636.106 1.272.106h1.484q10.177.106 16.96-2.014q6.784-2.226 9.116-15.476q1.908-11.13-3.816-12.826q-5.618-1.695-14.098-1.59q-1.272.106-2.438.106h-2.226z"/></g></svg>
+                    </div>
+                </div>
+                <div class="changeMode flex flex-col gap-4 rounded-lg">
+                    <div class="flex gap-2">
+                        <svg class="w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 6.087c0-.355.186-.676.401-.959.221-.29.349-.634.349-1.003 0-1.036-1.007-1.875-2.25-1.875s-2.25.84-2.25 1.875c0 .369.128.713.349 1.003.215.283.401.604.401.959v0a.64.64 0 0 1-.657.643 48.39 48.39 0 0 1-4.163-.3c.186 1.613.293 3.25.315 4.907a.656.656 0 0 1-.658.663v0c-.355 0-.676-.186-.959-.401a1.647 1.647 0 0 0-1.003-.349c-1.036 0-1.875 1.007-1.875 2.25s.84 2.25 1.875 2.25c.369 0 .713-.128 1.003-.349.283-.215.604-.401.959-.401v0c.31 0 .555.26.532.57a48.039 48.039 0 0 1-.642 5.056c1.518.19 3.058.309 4.616.354a.64.64 0 0 0 .657-.643v0c0-.355-.186-.676-.401-.959a1.647 1.647 0 0 1-.349-1.003c0-1.035 1.008-1.875 2.25-1.875 1.243 0 2.25.84 2.25 1.875 0 .369-.128.713-.349 1.003-.215.283-.4.604-.4.959v0c0 .333.277.599.61.58a48.1 48.1 0 0 0 5.427-.63 48.05 48.05 0 0 0 .582-4.717.532.532 0 0 0-.533-.57v0c-.355 0-.676.186-.959.401-.29.221-.634.349-1.003.349-1.035 0-1.875-1.007-1.875-2.25s.84-2.25 1.875-2.25c.37 0 .713.128 1.003.349.283.215.604.401.96.401v0a.656.656 0 0 0 .658-.663 48.422 48.422 0 0 0-.37-5.36c-1.886.342-3.81.574-5.766.689a.578.578 0 0 1-.61-.58v0Z" />
+                        </svg>
+                        <h1 class="text-base font-[600]">Frameworks y Librerías</h1>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <svg class="w-10 h-10" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><g fill="none"><rect width="256" height="256" fill="url(#skillIconsJquery0)" rx="60"/><path fill="#fff" d="M79.238 68.74c-9.986 14.618-8.742 33.633-1.134 49.146l.56 1.105l.378.7c.07.136.15.27.223.402c.132.246.264.482.378.724l.728 1.272l.415.7l.845 1.346l.378.567c.378.605.805 1.206 1.225 1.799l.034.047c.066.095.14.189.19.284c.362.51.755 1.013 1.133 1.512l.42.544l1.03 1.29l.393.48q.703.848 1.437 1.671l.03.03c.019.024.038.038.057.062q.71.803 1.459 1.569l.469.48l1.166 1.165l.476.461q.787.753 1.597 1.48l.303.264l1.45 1.248l.6.488l1.21.945l.647.501l1.849 1.351c.047.032.088.066.136.098c.434.303.875.596 1.317.889l.571.387l2.064 1.286l.571.327l1.55.884c.283.155.573.303.856.45l1.108.567l.255.125l.454.223l1.757.828l.373.189q1.017.451 2.049.867l.499.201l1.933.729l.242.087a66 66 0 0 0 2.155.719l.52.158c.756.227 1.465.498 2.225.643c48.29 8.99 62.321-29.536 62.321-29.536c-11.781 15.632-32.693 19.752-52.505 15.165c-.751-.189-1.479-.41-2.212-.631l-.552-.189a69 69 0 0 1-2.128-.705l-.293-.108a66 66 0 0 1-1.877-.709l-.529-.212a57 57 0 0 1-2.027-.858l-.404-.181l-1.709-.813l-.491-.242a61 61 0 0 1-1.324-.686l-.882-.473a49 49 0 0 1-1.584-.905l-.535-.303a78 78 0 0 1-2.064-1.285c-.189-.123-.371-.253-.558-.378l-1.469-.994l-.472-.34l-1.389-1.021l-.617-.473l-1.253-.998l-.559-.453l-1.56-1.323a2 2 0 0 0-.189-.146a72 72 0 0 1-1.64-1.52l-.462-.453l-1.18-1.176l-.46-.473a58 58 0 0 1-1.446-1.557c-.023-.027-.05-.051-.072-.076q-.75-.836-1.467-1.701l-.384-.465l-1.058-1.329l-.388-.491l-1.219-1.654c-11-15.282-14.932-36.358-6.162-53.668zm30.999-12.316c-7.22 10.585-6.829 24.75-1.196 35.944a47 47 0 0 0 3.194 5.43c1.082 1.579 2.282 3.46 3.718 4.726c.52.567 1.064 1.134 1.62 1.713c.14.145.284.283.427.429q.81.803 1.656 1.567l.068.06a50 50 0 0 0 1.949 1.645l.439.347q.99.78 2.022 1.505q.027.023.057.044c.302.213.614.415.922.619c.148.099.287.203.435.295q.74.484 1.499.936l.212.125l1.323.756c.155.089.313.166.472.249l.945.488c.048.025.095.043.14.066c.637.321 1.278.624 1.934.917c.14.062.283.119.427.179a47 47 0 0 0 1.588.656l.68.254q.724.268 1.456.516l.657.213c.694.221 1.38.497 2.104.62c37.284 6.291 45.894-22.947 45.894-22.947c-7.759 11.379-22.784 16.812-38.821 12.574a41 41 0 0 1-2.111-.624c-.214-.066-.423-.136-.635-.189a41 41 0 0 1-1.476-.518l-.668-.253c-.535-.189-1.064-.425-1.587-.652c-.144-.063-.288-.119-.429-.185a37 37 0 0 1-1.947-.921c-.329-.164-.652-.336-.976-.507l-.563-.294a39 39 0 0 1-1.234-.709l-.295-.189a49 49 0 0 1-1.493-.93c-.152-.099-.299-.189-.45-.306l-.968-.652a52 52 0 0 1-2.015-1.501l-.454-.363c-7.018-5.644-12.583-13.356-15.227-22.102c-2.773-9.073-2.174-19.252 2.646-27.514zm26.066-9.201c-4.257 6.381-4.674 14.305-1.701 21.352c3.115 7.479 9.498 13.348 16.947 16.129c.307.117.615.22.945.327l.409.132c.438.14.875.302 1.327.39c20.588 4.05 26.171-10.76 27.657-12.94c-4.892 7.174-13.112 8.896-23.198 6.403c-.794-.199-1.673-.492-2.458-.767a30 30 0 0 1-2.897-1.227a30 30 0 0 1-5.081-3.159c-9.045-6.975-14.653-20.278-8.763-31.112m-48.654 139.93l-1.394 4.945l1.394-4.943zm7.176 10.733l-1.537-.01zm-.378 7.383l-9.21.034zm1.927-7.372l-1.538-.009zm-1.1 6.744l1.607-6.118zm33.892-28.177l-2.987 14.05zm-7.684 0l-2.268 10.497zm7.154-.633h-6.389a.84.84 0 0 0-.782.631l-4.537 20.995a.84.84 0 0 1-.78.629h-4.523c-4.476 0-3.958-3.094-3.025-7.334l.029-.128l.542-2.892l.234-1.191l2.065-10.079a.508.508 0 0 0-.516-.633h-6.559a.83.83 0 0 0-.779.631l-2.955 14.014c-1.625 7.417-1.194 14.491 7.637 14.712l.255.005h13.859a.84.84 0 0 0 .781-.631l5.976-28.1c.076-.347-.157-.631-.51-.631zm25.493 22.329c.356 0 .567.283.516.631l-.62 3.034zm-.724 6.701l.62-3.036zm-.778.638l-11.776.057z"/><path fill="#fff" d="M140.223 189.783c-.005-.333.373-.904.728-.904l-.798-.013c-.378 3.618.07.917.07.917m4.397 11.299h-.123zm12.696-7.394c.356 0 .567.283.516.631l-.722 3.527zm-9.672 7.404h-.026zm-1.569-.012h-.09zm-.478.002h-.151zm-.467 0h-.132zm.873-.002h-.387zm1.617.012l-1.543.005zm8.197-.048l-8.175.05zm.756-.655l.52-2.541zm-11.144.693h-.299h.337zm-.936 0h-.453zm.486 0h-.378zM51.49 189.858l.993-4.4l-1.134 5.028l-.133.631l.276-1.262zm11.882-18.571h-7.018a.85.85 0 0 0-.788.63l-1.331 5.859a.493.493 0 0 0 .503.63h7.073a.84.84 0 0 0 .782-.63l1.286-5.873c.075-.345-.152-.629-.51-.629zm-1.527 9.769l-2.08 9.523zm-20.388 31.556l5.788.046c-1.709 0-4.53-.032-5.79-.047z"/><path fill="#fff" d="m53.456 181.056l-.994 4.4zm7.882-.63h-7.075a.85.85 0 0 0-.788.63l-1.985 8.8l-.276 1.263l-1.89 8.984q-.14.63-.34 1.242s-1.323 3.932-3.542 3.888l-2.202-.041a.85.85 0 0 0-.794.616l-1.465 6.167a.493.493 0 0 0 .493.636l5.79.047c5.55 0 8.474-3.076 10.35-11.922l4.253-19.658c.076-.345-.155-.629-.51-.629zm100.486 20.297c-.355 0-.567-.283-.51-.631l5.321-24.924zm7.395-.633l2.155-10.638z"/><path fill="#fff" d="M161.391 200.408c-.043-.174-.018-.6.057-.946l2.525-11.832l-2.661 12.462c-.076.348.155.631.51.631h.647c-.355 0-1.036-.142-1.078-.315m7.41.173c-.193.076-.643.142-.998.142h.646a.83.83 0 0 0 .775-.633l.129-.631c-.07.347-.378 1.045-.567 1.122zm1.493-5.81l.951-4.695zm20.996-17.934l.293 1.21c.082.346-.143.627-.497.629m-21.739 20.783l.945-4.688zm21.654-23.885l.289 1.24zm-19.756 14.502l.261-1.255l1.015-4.754l-1.149 5.383l-.127.624zm-4.523-15.318l-.221 1.039l-2.526 11.833l2.662-12.462l.085-.408z"/><path fill="#fff" d="m191.585 178.047l-.293-1.21l-.434-1.89c-.575-2.231-2.261-3.522-5.924-3.522l-16.861-.011a.83.83 0 0 0-.778.631l-.261 1.235l-.378 1.865l-5.187 24.295c-.076.348-.1.756-.057.945s.724.316 1.078.316h5.33c.355 0 .803-.065.998-.142c.195-.078.48-.756.567-1.123l2.023-10.007l2.164-10.139a.84.84 0 0 1 .779-.629l16.771-.008c.354 0 .579-.283.497-.629zm21.592-10.95l-1.291.005h-5.368a1.4 1.4 0 0 0-1.01.533l-11.87 17.39c-.2.293-.429.25-.51-.094l-.874-3.832a.85.85 0 0 0-.788-.629h-7.63c-.356 0-.567.278-.469.62l3.402 11.98c.098.34.104.901.019 1.247l-1.512 5.798a.47.47 0 0 0 .073.444a.48.48 0 0 0 .413.181h7.56a.88.88 0 0 0 .806-.624l1.512-5.797c.118-.408.304-.794.548-1.141l19.291-25.58c.214-.284.099-.514-.257-.511l-2.022.014zm-60.63 15.002c-.045.378-.4.662-.756.662h-9.678c-.334 0-.504-.227-.453-.511l.007-.051l.044-.164c.945-2.457 2.807-4.07 6.343-4.07c3.983 0 4.76 1.947 4.49 4.134zm-2.839-11.167c-12.418 0-15.361 7.538-17.011 15.146c-1.652 7.755-1.509 15.008 11.341 15.008h2.037l1.569-.006l8.177-.049a.83.83 0 0 0 .769-.633l1.242-6.071c.072-.348-.16-.632-.516-.632h-11.553c-4.593 0-5.959-1.221-5.457-4.81h18.468a.74.74 0 0 0 .684-.476a.7.7 0 0 0 .045-.161c2.741-10.339 1.955-17.308-9.791-17.308zM91.01 182.058l-.174.618l-1.394 4.944l-1.395 4.941a.91.91 0 0 1-.82.62h-7.384c-5.599 0-6.962-4.379-5.599-10.838c1.361-6.606 4.036-10.714 9.546-11.129c7.53-.567 9.035 4.729 7.22 10.842zm5.062 10.745s3.478-8.449 4.272-13.331c1.077-6.535-2.192-16.01-14.828-16.01c-12.565 0-18.02 9.046-20.1 18.902c-2.08 9.904.646 18.592 13.136 18.524l19.064-.07a.89.89 0 0 0 .808-.628l1.606-6.12a.48.48 0 0 0-.07-.444a.47.47 0 0 0-.412-.184l-3.075-.019c-.302-.002-.473-.196-.439-.453a.7.7 0 0 1 .038-.144z"/><path fill="#fff" d="M158.267 187.15a.423.423 0 1 1-.847 0a.423.423 0 1 1 .847 0"/><defs><linearGradient id="skillIconsJquery0" x1="0" x2="256" y1="0" y2="256" gradientUnits="userSpaceOnUse"><stop stop-color="#ff5c00"/><stop offset="1" stop-color="#ff0f00"/></linearGradient></defs></g></svg>
+                        <svg class="w-10 h-10" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><g fill="none"><rect width="256" height="256" fill="#242938" rx="60"/><path fill="#00d8ff" d="M128.001 146.951c10.304 0 18.656-8.353 18.656-18.656s-8.352-18.656-18.656-18.656s-18.656 8.353-18.656 18.656s8.353 18.656 18.656 18.656"/><path stroke="#00d8ff" stroke-width="8.911" d="M128.002 90.363c25.048 0 48.317 3.594 65.862 9.635C215.003 107.275 228 118.306 228 128.295c0 10.409-13.774 22.128-36.475 29.649c-17.162 5.686-39.746 8.654-63.523 8.654c-24.378 0-47.463-2.786-64.819-8.717C41.225 150.376 28 138.506 28 128.295c0-9.908 12.41-20.854 33.252-28.12c17.61-6.14 41.453-9.812 66.746-9.812z" clip-rule="evenodd"/><path stroke="#00d8ff" stroke-width="8.911" d="M94.981 109.438c12.514-21.698 27.251-40.06 41.249-52.24c16.864-14.677 32.914-20.425 41.566-15.436c9.017 5.2 12.288 22.988 7.463 46.41c-3.645 17.707-12.359 38.753-24.238 59.351c-12.179 21.118-26.124 39.724-39.931 51.792c-17.471 15.272-34.362 20.799-43.207 15.698c-8.583-4.946-11.865-21.167-7.747-42.852c3.479-18.323 12.21-40.812 24.841-62.723z" clip-rule="evenodd"/><path stroke="#00d8ff" stroke-width="8.911" d="M95.012 147.578c-12.549-21.674-21.093-43.616-24.659-61.826c-4.293-21.941-1.258-38.716 7.387-43.72c9.009-5.216 26.052.834 43.934 16.712c13.52 12.004 27.403 30.061 39.316 50.639c12.214 21.098 21.368 42.473 24.929 60.461c4.506 22.764.859 40.157-7.978 45.272c-8.574 4.964-24.265-.291-40.996-14.689c-14.136-12.164-29.26-30.959-41.933-52.849Z" clip-rule="evenodd"/></g></svg>
+                        <svg class="w-10 h-10" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><g fill="none"><rect width="256" height="256" fill="#242938" rx="60"/><path fill="url(#skillIconsTailwindcssDark0)" fill-rule="evenodd" d="M83 110q9-36 45-36c36 0 40.5 27 58.5 31.5q18 4.502 31.5-13.5q-9 36-45 36c-36 0-40.5-27-58.5-31.5Q96.5 92 83 110m-45 54q9-36 45-36c36 0 40.5 27 58.5 31.5q18 4.502 31.5-13.5q-9 36-45 36c-36 0-40.5-27-58.5-31.5q-18-4.502-31.5 13.5" clip-rule="evenodd"/><defs><linearGradient id="skillIconsTailwindcssDark0" x1="86.5" x2="163.5" y1="74" y2="185.5" gradientUnits="userSpaceOnUse"><stop stop-color="#32b1c1"/><stop offset="1" stop-color="#14c6b7"/></linearGradient></defs></g></svg>
+                        <svg class="w-10 h-10" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><g fill="none"><rect width="256" height="256" fill="#242938" rx="60"/><path fill="#81cd39" d="M119.878 31.116c4.919-2.815 11.325-2.828 16.239 0c24.722 13.97 49.452 27.917 74.17 41.895c4.65 2.619 7.759 7.793 7.712 13.15v84.045c.035 5.579-3.382 10.877-8.287 13.436c-24.641 13.893-49.27 27.802-73.907 41.695c-5.019 2.87-11.554 2.649-16.418-.457c-7.387-4.282-14.787-8.544-22.175-12.822c-1.51-.9-3.212-1.616-4.278-3.08c.943-1.27 2.628-1.428 3.997-1.983c3.083-.981 5.916-2.555 8.748-4.082c.717-.49 1.591-.302 2.278.136c6.317 3.622 12.579 7.35 18.917 10.937c1.352.781 2.721-.256 3.877-.9c24.18-13.667 48.39-27.281 72.567-40.952c.896-.431 1.391-1.382 1.318-2.363c.017-27.725.004-55.454.009-83.18c.102-1.112-.542-2.136-1.549-2.592c-24.555-13.829-49.099-27.678-73.65-41.51a2.56 2.56 0 0 0-2.892-.005c-24.552 13.837-49.09 27.7-73.642 41.527c-1.003.457-1.676 1.464-1.557 2.58c.005 27.726 0 55.455 0 83.184a2.35 2.35 0 0 0 1.336 2.334c6.551 3.715 13.111 7.404 19.667 11.107c3.694 1.987 8.228 3.169 12.298 1.646c3.59-1.288 6.107-4.953 6.039-8.765c.034-27.563-.017-55.13.025-82.69c-.09-1.223 1.071-2.234 2.261-2.118c3.148-.022 6.3-.043 9.448.008c1.314-.03 2.218 1.288 2.056 2.52c-.013 27.738.034 55.476-.021 83.213c.008 7.393-3.029 15.437-9.867 19.054c-8.423 4.363-18.835 3.438-27.157-.746c-7.204-3.596-14.08-7.84-21.156-11.692c-4.918-2.545-8.318-7.864-8.283-13.439V86.161c-.052-5.468 3.182-10.736 7.975-13.317c24.637-13.903 49.27-27.818 73.902-41.728"/><path fill="#81cd39" d="M141.372 89.335c10.745-.692 22.248-.41 31.917 4.884c7.487 4.056 11.637 12.57 11.769 20.887c-.209 1.121-1.382 1.74-2.453 1.663c-3.117-.004-6.236.043-9.353-.021c-1.323.051-2.091-1.168-2.257-2.337c-.896-3.98-3.067-7.921-6.812-9.841c-5.75-2.878-12.416-2.733-18.686-2.673c-4.577.242-9.499.639-13.377 3.33c-2.977 2.039-3.881 6.155-2.819 9.47c1.002 2.38 3.749 3.148 5.998 3.856c12.949 3.387 26.671 3.049 39.373 7.506c5.259 1.817 10.403 5.35 12.203 10.856c2.355 7.38 1.323 16.2-3.928 22.124c-4.258 4.875-10.459 7.529-16.644 8.97c-8.228 1.835-16.767 1.882-25.123 1.067c-7.857-.896-16.034-2.96-22.099-8.313c-5.187-4.504-7.72-11.522-7.469-18.294c.06-1.144 1.199-1.942 2.295-1.848c3.139-.025 6.279-.034 9.418.005c1.255-.09 2.184.994 2.249 2.176c.578 3.791 2.003 7.771 5.31 10.018c6.38 4.117 14.387 3.835 21.693 3.95c6.053-.268 12.848-.349 17.787-4.35c2.606-2.282 3.378-6.1 2.674-9.384c-.763-2.773-3.664-4.065-6.155-4.91c-12.783-4.043-26.659-2.576-39.318-7.149c-5.14-1.816-10.11-5.25-12.084-10.53c-2.755-7.473-1.493-16.717 4.308-22.44c5.656-5.695 13.82-7.888 21.583-8.672"/></g></svg>
+                    </div>
+                </div>
+                <div class="changeMode flex flex-col gap-4 rounded-lg">
+                    <div class="flex gap-2">
+                        <svg class="w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42" />
+                        </svg>
+                        <h1 class="mb-[1px] text-base font-[600]">Diseño y UI</h1>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <svg class="w-10 h-10" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><g fill="none"><rect width="256" height="256" fill="#242938" rx="60"/><g clip-path="url(#skillIconsFigmaDark0)"><path fill="#0acf83" d="M94.347 228c18.4 0 33.333-14.933 33.333-33.333v-33.334H94.347c-18.4 0-33.334 14.934-33.334 33.334S75.947 228 94.347 228"/><path fill="#a259ff" d="M61.013 128c0-18.4 14.934-33.333 33.334-33.333h33.333v66.666H94.347c-18.4 0-33.334-14.933-33.334-33.333"/><path fill="#f24e1e" d="M61.013 61.333C61.013 42.933 75.947 28 94.347 28h33.333v66.667H94.347c-18.4 0-33.334-14.934-33.334-33.334"/><path fill="#ff7262" d="M127.68 28h33.333c18.4 0 33.334 14.933 33.334 33.333s-14.934 33.334-33.334 33.334H127.68z"/><path fill="#1abcfe" d="M194.347 128c0 18.4-14.934 33.333-33.334 33.333S127.68 146.4 127.68 128s14.933-33.333 33.333-33.333S194.347 109.6 194.347 128"/></g><defs><clipPath id="skillIconsFigmaDark0"><path fill="#fff" d="M61 28h133.36v200H61z"/></clipPath></defs></g></svg>
+                        <svg class="w-10 h-10" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><g fill="none"><rect width="256" height="256" fill="#0073aa" rx="60"/><path fill="#fff" d="M42.214 127.994c0 33.955 19.733 63.299 48.347 77.205L49.641 93.083a85.5 85.5 0 0 0-7.427 34.911m143.694-4.329c0-10.601-3.808-17.943-7.074-23.658c-4.349-7.066-8.425-13.05-8.425-20.116c0-7.886 5.981-15.226 14.405-15.226c.381 0 .741.047 1.112.068c-15.262-13.982-35.595-22.519-57.929-22.519c-29.968 0-56.335 15.376-71.673 38.666c2.012.06 3.909.103 5.52.103c8.973 0 22.862-1.09 22.862-1.09c4.624-.272 5.17 6.52.55 7.067c0 0-4.647.547-9.818.818l31.238 92.918l18.773-56.303l-13.365-36.618c-4.619-.271-8.995-.818-8.995-.818c-4.623-.271-4.081-7.339.542-7.066c0 0 14.166 1.088 22.595 1.088c8.972 0 22.862-1.088 22.862-1.088c4.628-.273 5.171 6.519.55 7.066c0 0-4.657.547-9.818.818l31.001 92.214l8.556-28.592c3.709-11.866 6.531-20.388 6.531-27.732"/><path fill="#fff" d="m129.503 135.498l-25.738 74.79a85.8 85.8 0 0 0 24.233 3.495a85.7 85.7 0 0 0 28.486-4.863a7.5 7.5 0 0 1-.61-1.182zm73.766-48.66a66 66 0 0 1 .578 8.82c0 8.705-1.626 18.491-6.523 30.727l-26.203 75.759c25.503-14.872 42.657-42.501 42.657-74.148c.001-14.915-3.808-28.94-10.509-41.158"/><path fill="#fff" d="M127.998 28C72.86 28 28 72.857 28 127.994c0 55.144 44.86 99.999 99.998 99.999c55.135 0 100.002-44.855 100.002-99.999C227.998 72.857 183.133 28 127.998 28m0 195.41c-52.61 0-95.413-42.804-95.413-95.416c0-52.609 42.802-95.409 95.413-95.409c52.607 0 95.407 42.8 95.407 95.409c0 52.612-42.8 95.416-95.407 95.416"/></g></svg>
+                    </div>
+                </div>
+                <div class="changeMode flex flex-col gap-4 rounded-lg">
+                    <div class="flex gap-2">
+                        <svg class="w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z" />
+                        </svg>
+                        <h1 class="text-base font-[600]">Versionado y herramientas</h1>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <svg class="w-10 h-10" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><g fill="none"><rect width="256" height="256" fill="#f03c2e" rx="60"/><g clip-path="url(#skillIconsGit0)"><path fill="#fff" d="m224.225 119.094l-87.319-87.319a12.87 12.87 0 0 0-14.035-2.793a12.9 12.9 0 0 0-4.177 2.793L100.569 49.9l23 23c5.35-1.875 11.475-.594 15.737 3.669a15.31 15.31 0 0 1 3.631 15.831l22.169 22.169c5.363-1.85 11.55-.657 15.831 3.637a15.32 15.32 0 0 1 3.321 16.706a15.333 15.333 0 0 1-20.029 8.293c-1.86-.771-3.55-1.9-4.973-3.324c-4.5-4.5-5.612-11.125-3.337-16.669l-20.675-20.675v54.407a15.6 15.6 0 0 1 4.062 2.9a15.326 15.326 0 0 1-21.675 21.675a15.32 15.32 0 0 1-3.326-16.704a15.3 15.3 0 0 1 3.326-4.971c1.481-1.475 3.125-2.594 5.019-3.344v-54.913a15.2 15.2 0 0 1-5.019-3.343a15.315 15.315 0 0 1-3.3-16.757L91.644 58.814l-59.875 59.812a12.88 12.88 0 0 0-2.795 14.04a12.9 12.9 0 0 0 2.795 4.179l87.325 87.312a12.9 12.9 0 0 0 4.177 2.793a12.9 12.9 0 0 0 9.858 0a12.9 12.9 0 0 0 4.177-2.793l86.919-86.781a12.88 12.88 0 0 0 3.776-9.109a12.88 12.88 0 0 0-3.776-9.11"/></g><defs><clipPath id="skillIconsGit0"><path fill="#fff" d="M28 28h200v200H28z"/></clipPath></defs></g></svg>
+                        <svg class="w-10 h-10" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><g fill="none"><rect width="256" height="256" fill="#242938" rx="60"/><path fill="#fff" d="M128.001 30C72.779 30 28 74.77 28 130.001c0 44.183 28.653 81.667 68.387 94.89c4.997.926 6.832-2.169 6.832-4.81c0-2.385-.093-10.262-.136-18.618c-27.82 6.049-33.69-11.799-33.69-11.799c-4.55-11.559-11.104-14.632-11.104-14.632c-9.073-6.207.684-6.079.684-6.079c10.042.705 15.33 10.305 15.33 10.305c8.919 15.288 23.394 10.868 29.1 8.313c.898-6.464 3.489-10.875 6.349-13.372c-22.211-2.529-45.56-11.104-45.56-49.421c0-10.918 3.906-19.839 10.303-26.842c-1.039-2.519-4.462-12.69.968-26.464c0 0 8.398-2.687 27.508 10.25c7.977-2.215 16.531-3.326 25.03-3.364c8.498.038 17.06 1.149 25.051 3.365c19.087-12.939 27.473-10.25 27.473-10.25c5.443 13.773 2.019 23.945.98 26.463c6.412 7.003 10.292 15.924 10.292 26.842c0 38.409-23.394 46.866-45.662 49.341c3.587 3.104 6.783 9.189 6.783 18.519c0 13.38-.116 24.149-.116 27.443c0 2.661 1.8 5.779 6.869 4.797C199.383 211.64 228 174.169 228 130.001C228 74.771 183.227 30 128.001 30M65.454 172.453c-.22.497-1.002.646-1.714.305c-.726-.326-1.133-1.004-.898-1.502c.215-.512.999-.654 1.722-.311c.727.326 1.141 1.01.89 1.508m4.919 4.389c-.477.443-1.41.237-2.042-.462c-.654-.697-.777-1.629-.293-2.078c.491-.442 1.396-.235 2.051.462c.654.706.782 1.631.284 2.078m3.374 5.616c-.613.426-1.615.027-2.234-.863c-.613-.889-.613-1.955.013-2.383c.621-.427 1.608-.043 2.236.84c.611.904.611 1.971-.015 2.406m5.707 6.504c-.548.604-1.715.442-2.57-.383c-.874-.806-1.118-1.95-.568-2.555c.555-.606 1.729-.435 2.59.383c.868.804 1.133 1.957.548 2.555m7.376 2.195c-.242.784-1.366 1.14-2.499.807c-1.13-.343-1.871-1.26-1.642-2.052c.235-.788 1.364-1.159 2.505-.803c1.13.341 1.871 1.252 1.636 2.048m8.394.932c.028.824-.932 1.508-2.121 1.523c-1.196.027-2.163-.641-2.176-1.452c0-.833.939-1.51 2.134-1.53c1.19-.023 2.163.639 2.163 1.459m8.246-.316c.143.804-.683 1.631-1.864 1.851c-1.161.212-2.236-.285-2.383-1.083c-.144-.825.697-1.651 1.856-1.865c1.183-.205 2.241.279 2.391 1.097"/></g></svg>
+                        <svg class="w-10 h-10" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><g fill="none"><rect width="256" height="256" fill="#242938" rx="60"/><path fill="#2489ca" d="M33.716 100.208s-4.735-3.413.947-7.97l13.236-11.836s3.788-3.985 7.792-.513l122.149 92.479v44.346s-.059 6.964-8.996 6.194z"/><path fill="#1070b3" d="m65.2 128.792l-31.484 28.623s-3.236 2.407 0 6.708l14.617 13.295s3.472 3.729 8.601-.513l33.378-25.309z"/><path fill="#0877b9" d="m120.474 129.029l57.741-44.09l-.375-44.109s-2.466-9.627-10.692-4.616l-76.836 69.931z"/><path fill="#3c99d4" d="M168.844 222.968c3.354 3.432 7.418 2.308 7.418 2.308l44.997-22.173c5.76-3.926 4.951-8.798 4.951-8.798V61.898c0-5.82-5.958-7.831-5.958-7.831l-38.999-18.8c-8.522-5.267-14.105.947-14.105.947s7.18-5.168 10.692 4.616v175.075a8 8 0 0 1-.769 3.453c-1.026 2.071-3.255 4.004-8.601 3.195z"/></g></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="mainContact" class="scroll-offset flex flex-col pt-12 gap-12 custom-wrap custom-gap">
+            <div class="flex flex-col gap-6 max-w-2xl">
+                <div class="flex flex-col gap-2 text-5xl sm:text-6xl lg:text-7xl font-[400]">
+                    <h1>Ponte en <span class="font-bold changeColor">Contacto</span></h1>
+                </div>
+                <p class="text-base">Espacio abierto para conectar y colaborar en soluciones digitales funcionales, accesibles y centradas en el usuario, con enfoque en resultados reales, diseño y desarrollo</p>                
+            </div>
+            <div class="custom-grid-contacto custom-gap-contacto grid grid-cols-1 sm:grid-cols-2 gap-8 h-fit w-full">
+                <form id="emailForm" class="flex flex-col gap-4 max-w-sm">
+                    <div class="flex flex-col gap-2 text-sm">
+                        <label class="font-[600]">Nombre</label>
+                        <input type="text" id="nombre" placeholder="Tu nombre" class="changeMode-border-form px-4 py-2 pb-2.5 border-1 rounded-lg" />
+                    </div>
+                    <div class="flex flex-col gap-2 text-sm">
+                        <label class="font-[600]">Correo</label>
+                        <input type="email" id="correo" placeholder="Tu correo" class="changeMode-border-form px-4 py-2 pb-2.5 border-1 rounded-lg" />
+                    </div>
+                    <div class="flex flex-col gap-2 text-sm">
+                        <label class="font-[600]">Mensaje</label>
+                        <textarea id="mensaje" placeholder="Escribe tu mensaje aquí..." class="auto-resize changeMode-border-form px-4 py-2 border-1 rounded-lg" oninput="autoResize(this)"></textarea>
+                    </div>
+                    <button type="button" onclick="sendEmail()" class="custom-margin-top changeMode-hover-bg changeMode-border-form flex justify-center items-center w-fit px-4 py-3 mt-4 gap-2 border-1 rounded-lg cursor-pointer">
+                        <svg class="w-4.5 mt-[2.5px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
+                        </svg>
+                        <p class="text-sm">Enviar mensaje</p>
+                    </button>
+                </form>
+                <div class="flex flex-col gap-4">
+                    <div class="flex gap-2">
+                        <svg class="w-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+                        </svg>                          
+                        <h1 class="mb-[1px] text-base font-[600]">Conecta conmigo</h1>
+                    </div>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="https://github.com/ByOswaldo65" class="changeMode-border changeMode-hover-bg flex w-fit px-4 py-3 pb-3.5 gap-4 border-1 rounded-lg">
+                            <div class="flex justify-center items-center gap-3.5">
+                                <svg class="h-9.5 w-9.5 sm:h-10 sm:w-10" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><g fill="none"><rect width="256" height="256" fill="#242938" rx="60"/><path fill="#fff" d="M128.001 30C72.779 30 28 74.77 28 130.001c0 44.183 28.653 81.667 68.387 94.89c4.997.926 6.832-2.169 6.832-4.81c0-2.385-.093-10.262-.136-18.618c-27.82 6.049-33.69-11.799-33.69-11.799c-4.55-11.559-11.104-14.632-11.104-14.632c-9.073-6.207.684-6.079.684-6.079c10.042.705 15.33 10.305 15.33 10.305c8.919 15.288 23.394 10.868 29.1 8.313c.898-6.464 3.489-10.875 6.349-13.372c-22.211-2.529-45.56-11.104-45.56-49.421c0-10.918 3.906-19.839 10.303-26.842c-1.039-2.519-4.462-12.69.968-26.464c0 0 8.398-2.687 27.508 10.25c7.977-2.215 16.531-3.326 25.03-3.364c8.498.038 17.06 1.149 25.051 3.365c19.087-12.939 27.473-10.25 27.473-10.25c5.443 13.773 2.019 23.945.98 26.463c6.412 7.003 10.292 15.924 10.292 26.842c0 38.409-23.394 46.866-45.662 49.341c3.587 3.104 6.783 9.189 6.783 18.519c0 13.38-.116 24.149-.116 27.443c0 2.661 1.8 5.779 6.869 4.797C199.383 211.64 228 174.169 228 130.001C228 74.771 183.227 30 128.001 30M65.454 172.453c-.22.497-1.002.646-1.714.305c-.726-.326-1.133-1.004-.898-1.502c.215-.512.999-.654 1.722-.311c.727.326 1.141 1.01.89 1.508m4.919 4.389c-.477.443-1.41.237-2.042-.462c-.654-.697-.777-1.629-.293-2.078c.491-.442 1.396-.235 2.051.462c.654.706.782 1.631.284 2.078m3.374 5.616c-.613.426-1.615.027-2.234-.863c-.613-.889-.613-1.955.013-2.383c.621-.427 1.608-.043 2.236.84c.611.904.611 1.971-.015 2.406m5.707 6.504c-.548.604-1.715.442-2.57-.383c-.874-.806-1.118-1.95-.568-2.555c.555-.606 1.729-.435 2.59.383c.868.804 1.133 1.957.548 2.555m7.376 2.195c-.242.784-1.366 1.14-2.499.807c-1.13-.343-1.871-1.26-1.642-2.052c.235-.788 1.364-1.159 2.505-.803c1.13.341 1.871 1.252 1.636 2.048m8.394.932c.028.824-.932 1.508-2.121 1.523c-1.196.027-2.163-.641-2.176-1.452c0-.833.939-1.51 2.134-1.53c1.19-.023 2.163.639 2.163 1.459m8.246-.316c.143.804-.683 1.631-1.864 1.851c-1.161.212-2.236-.285-2.383-1.083c-.144-.825.697-1.651 1.856-1.865c1.183-.205 2.241.279 2.391 1.097"/></g></svg>
+                                <div class="hidden sm:flex flex flex-col">
+                                    <h2 class="text-sm">GitHub</h2>
+                                    <p class="changeMode-back-text text-sm">ByOswaldo65</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://www.linkedin.com/in/pedro-benitez-18b279331/" class="changeMode-border changeMode-hover-bg flex w-fit px-4 py-3 pb-3.5 gap-4 border-1 rounded-lg">
+                            <div class="flex justify-center items-center gap-3.5">
+                                <svg class="h-8 w-8 sm:h-10 sm:w-10" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><g fill="none"><rect width="256" height="256" fill="#fff" rx="60"/><rect width="256" height="256" fill="#0a66c2" rx="60"/><path fill="#fff" d="M184.715 217.685h29.27a4 4 0 0 0 4-3.999l.015-61.842c0-32.323-6.965-57.168-44.738-57.168c-14.359-.534-27.9 6.868-35.207 19.228a.32.32 0 0 1-.595-.161V101.66a4 4 0 0 0-4-4h-27.777a4 4 0 0 0-4 4v112.02a4 4 0 0 0 4 4h29.268a4 4 0 0 0 4-4v-55.373c0-15.657 2.97-30.82 22.381-30.82c19.135 0 19.383 17.916 19.383 31.834v54.364a4 4 0 0 0 4 4M38 59.628c0 11.864 9.767 21.626 21.632 21.626c11.862-.001 21.623-9.769 21.623-21.631C81.253 47.761 71.491 38 59.628 38C47.762 38 38 47.763 38 59.627m6.959 158.058h29.307a4 4 0 0 0 4-4V101.66a4 4 0 0 0-4-4H44.959a4 4 0 0 0-4 4v112.025a4 4 0 0 0 4 4"/></g></svg>
+                                <div class="hidden sm:flex flex flex-col">
+                                    <h2 class="text-sm">LinkedIn</h2>
+                                    <p class="changeMode-back-text text-sm">Pedro Benitez</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://www.behance.net/pedroben2" class="changeMode-border changeMode-hover-bg flex w-fit px-4 py-3 pb-3.5 gap-4 border-1 rounded-lg">
+                            <div class="flex justify-center items-center gap-2">
+                                <svg class="w-10.5 h-10.5" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                                    <path fill="#2196F3" d="M6,10c0-2.209,1.791-4,4-4h28c2.209,0,4,1.791,4,4v28c0,2.209-1.791,4-4,4H10c-2.209,0-4-1.791-4-4V10z"></path><path fill="#FFF" d="M27 17H34V19H27zM21.512 23.428c.585-.285 1.903-.934 1.903-2.857 0-3.617-3.952-3.57-4.683-3.57H12v14h7.025C19.61 31 24 30.835 24 26.999 24 24.524 22.39 23.714 21.512 23.428zM15 19.428h2.928c.292 0 2.195.104 2.195 1.572 0 1.467-1.463 1.714-1.902 1.714H15V19.428zM18.336 28.571h-3.367v-3.856h3.367c.731 0 2.341.237 2.341 2C20.677 28.476 18.628 28.571 18.336 28.571zM32.438 28.395c-.465.289-.929.436-1.549.436-2.326 0-2.789-1.961-2.789-2.83H36c0-.869 0-1.511-.155-2.236C35.689 23.04 34.63 20 30.734 20 25.289 20 25 24.778 25 25.5c0 .723.156 1.593.467 2.171.309.724.619 1.304 1.084 1.736.464.435 1.083.866 1.703 1.157C29.028 30.855 29.803 31 30.578 31c1.238 0 2.324-.288 3.253-.868.931-.579 1.55-1.448 2.014-2.606h-2.633C33.057 27.816 32.902 28.104 32.438 28.395zM30.734 22.027c1.518 0 2.168 1.592 2.322 2.314H28.1C28.1 24.198 28.471 22.027 30.734 22.027z"></path>
+                                </svg>
+                                <div class="hidden sm:flex flex flex-col">
+                                    <h2 class="text-sm">Behance</h2>
+                                    <p class="changeMode-back-text text-sm">Pedro Ben</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="mailto:pedroben83@gmail.com?subject=Consulta%20profesional%20desde%20tu%20portafolio&body=Estimado%20Pedro,%0A%0AHe%20visitado%20tu%20portafolio%20y%20me%20gustaría%20ponerme%20en%20contacto%20contigo%20para%20consultarte%20sobre%20una%20posible%20colaboración%20o%20proyecto.%0A%0APor%20favor%2C%20no%20dudes%20en%20responder%20este%20correo%20cuando%20te%20sea%20posible.%0A%0AAtentamente,%0A[Tu%20nombre]" class="changeMode-border changeMode-hover-bg flex w-fit px-4 py-3 pb-3.5 gap-4 border-1 rounded-lg">
+                            <div class="flex justify-center items-center gap-3.5">
+                                <svg class="h-8 w-8 sm:h-10 sm:w-10" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><g fill="none"><rect width="256" height="256" fill="#f4f2ed" rx="60"/><path fill="#4285f4" d="M41.636 203.039h31.818v-77.273L28 91.676v97.727c0 7.545 6.114 13.636 13.636 13.636"/><path fill="#34a853" d="M182.545 203.039h31.819c7.545 0 13.636-6.114 13.636-13.636V91.675l-45.455 34.091"/><path fill="#fbbc04" d="M182.545 66.675v59.091L228 91.676V73.492c0-16.863-19.25-26.477-32.727-16.363"/><path fill="#ea4335" d="M73.455 125.766v-59.09L128 107.583l54.545-40.909v59.091L128 166.675"/><path fill="#c5221f" d="M28 73.493v18.182l45.454 34.091v-59.09L60.727 57.13C47.227 47.016 28 56.63 28 73.493"/></g></svg>
+                                <div class="hidden sm:flex flex flex-col">
+                                    <h2 class="text-sm">Gmail</h2>
+                                    <p class="changeMode-back-text text-sm">pedroben83@gmail.com</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="mailto:pedroben83@outlook.com?subject=Consulta%20profesional%20desde%20tu%20portafolio&body=Estimado%20Pedro,%0A%0AHe%20visitado%20tu%20portafolio%20y%20me%20gustaría%20ponerme%20en%20contacto%20contigo%20para%20consultarte%20sobre%20una%20posible%20colaboración%20o%20proyecto.%0A%0APor%20favor%2C%20no%20dudes%20en%20responder%20este%20correo%20cuando%20te%20sea%20posible.%0A%0AAtentamente,%0A[Tu%20nombre]" class="changeMode-border changeMode-hover-bg flex w-fit px-4 py-3 pb-3.5 gap-4 border-1 rounded-lg">
+                            <div class="flex justify-center items-center gap-2.5">
+                                <svg class="h-9.5 w-9.5 sm:h-10.sm:5 w-10.5" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                                    <path fill="#103262" d="M43.255,23.547l-6.81-3.967v11.594H44v-6.331C44,24.309,43.716,23.816,43.255,23.547z"></path><path fill="#0084d7" d="M13,10h10v9H13V10z"></path><path fill="#33afec" d="M23,10h10v9H23V10z"></path><path fill="#54daff" d="M33,10h10v9H33V10z"></path><path fill="#027ad4" d="M23,19h10v9H23V19z"></path><path fill="#0553a4" d="M23,28h10v9H23V28z"></path><path fill="#25a2e5" d="M33,19h10v9H33V19z"></path><path fill="#0262b8" d="M33,28h10v9H33V28z"></path><polygon points="13,37 43,37 43,24.238 28.99,32.238 13,24.238" opacity=".019"></polygon><polygon points="13,37 43,37 43,24.476 28.99,32.476 13,24.476" opacity=".038"></polygon><polygon points="13,37 43,37 43,24.714 28.99,32.714 13,24.714" opacity=".057"></polygon><polygon points="13,37 43,37 43,24.952 28.99,32.952 13,24.952" opacity=".076"></polygon><polygon points="13,37 43,37 43,25.19 28.99,33.19 13,25.19" opacity=".095"></polygon><polygon points="13,37 43,37 43,25.429 28.99,33.429 13,25.429" opacity=".114"></polygon><polygon points="13,37 43,37 43,25.667 28.99,33.667 13,25.667" opacity=".133"></polygon><polygon points="13,37 43,37 43,25.905 28.99,33.905 13,25.905" opacity=".152"></polygon><polygon points="13,37 43,37 43,26.143 28.99,34.143 13,26.143" opacity=".171"></polygon><polygon points="13,37 43,37 43,26.381 28.99,34.381 13,26.381" opacity=".191"></polygon><polygon points="13,37 43,37 43,26.619 28.99,34.619 13,26.619" opacity=".209"></polygon><polygon points="13,37 43,37 43,26.857 28.99,34.857 13,26.857" opacity=".229"></polygon><polygon points="13,37 43,37 43,27.095 28.99,35.095 13,27.095" opacity=".248"></polygon><polygon points="13,37 43,37 43,27.333 28.99,35.333 13,27.333" opacity=".267"></polygon><polygon points="13,37 43,37 43,27.571 28.99,35.571 13,27.571" opacity=".286"></polygon><polygon points="13,37 43,37 43,27.81 28.99,35.81 13,27.81" opacity=".305"></polygon><polygon points="13,37 43,37 43,28.048 28.99,36.048 13,28.048" opacity=".324"></polygon><polygon points="13,37 43,37 43,28.286 28.99,36.286 13,28.286" opacity=".343"></polygon><polygon points="13,37 43,37 43,28.524 28.99,36.524 13,28.524" opacity=".362"></polygon><polygon points="13,37 43,37 43,28.762 28.99,36.762 13,28.762" opacity=".381"></polygon><polygon points="13,37 43,37 43,29 28.99,37 13,29" opacity=".4"></polygon><linearGradient id="Qf7015RosYe_HpjKeG0QTa_ut6gQeo5pNqf_gr1" x1="38.925" x2="32.286" y1="24.557" y2="36.024" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#31abec"></stop><stop offset="1" stop-color="#1582d5"></stop></linearGradient><path fill="url(#Qf7015RosYe_HpjKeG0QTa_ut6gQeo5pNqf_gr1)" d="M15.441,42h26.563c1.104,0,1.999-0.889,2-1.994C44.007,35.485,44,24.843,44,24.843	s-0.007,0.222-1.751,1.212S14.744,41.566,14.744,41.566S14.978,42,15.441,42z"></path><linearGradient id="Qf7015RosYe_HpjKeG0QTb_ut6gQeo5pNqf_gr2" x1="13.665" x2="41.285" y1="6.992" y2="9.074" gradientUnits="userSpaceOnUse"><stop offset=".042" stop-color="#076db4"></stop><stop offset=".85" stop-color="#0461af"></stop></linearGradient><path fill="url(#Qf7015RosYe_HpjKeG0QTb_ut6gQeo5pNqf_gr2)" d="M43,10H13V8c0-1.105,0.895-2,2-2h26c1.105,0,2,0.895,2,2V10z"></path><linearGradient id="Qf7015RosYe_HpjKeG0QTc_ut6gQeo5pNqf_gr3" x1="28.153" x2="23.638" y1="33.218" y2="41.1" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#33acee"></stop><stop offset="1" stop-color="#1b8edf"></stop></linearGradient><path fill="url(#Qf7015RosYe_HpjKeG0QTc_ut6gQeo5pNqf_gr3)" d="M13,25v15c0,1.105,0.895,2,2,2h15h12.004c0.462,0,0.883-0.162,1.221-0.425L13,25z"></path><path d="M21.319,13H13v24h8.319C23.352,37,25,35.352,25,33.319V16.681C25,14.648,23.352,13,21.319,13z" opacity=".05"></path><path d="M21.213,36H13V13.333h8.213c1.724,0,3.121,1.397,3.121,3.121v16.425	C24.333,34.603,22.936,36,21.213,36z" opacity=".07"></path><path d="M21.106,35H13V13.667h8.106c1.414,0,2.56,1.146,2.56,2.56V32.44C23.667,33.854,22.52,35,21.106,35z" opacity=".09"></path><linearGradient id="Qf7015RosYe_HpjKeG0QTd_ut6gQeo5pNqf_gr4" x1="3.53" x2="22.41" y1="14.53" y2="33.41" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#1784d8"></stop><stop offset="1" stop-color="#0864c5"></stop></linearGradient><path fill="url(#Qf7015RosYe_HpjKeG0QTd_ut6gQeo5pNqf_gr4)" d="M21,34H5c-1.105,0-2-0.895-2-2V16c0-1.105,0.895-2,2-2h16c1.105,0,2,0.895,2,2v16	C23,33.105,22.105,34,21,34z"></path><path fill="#fff" d="M13,18.691c-3.111,0-4.985,2.377-4.985,5.309S9.882,29.309,13,29.309	c3.119,0,4.985-2.377,4.985-5.308C17.985,21.068,16.111,18.691,13,18.691z M13,27.517c-1.765,0-2.82-1.574-2.82-3.516	s1.06-3.516,2.82-3.516s2.821,1.575,2.821,3.516S14.764,27.517,13,27.517z"></path>
+                                </svg>
+                                <div class="hidden sm:flex flex flex-col">
+                                    <h2 class="text-sm">Outlook</h2>
+                                    <p class="changeMode-back-text text-sm">pedroben83@outlook.com</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="changeMode flex justify-between items-center h-fit w-full pt-14">
+            <div class="flex justify-center items-center gap-1.5">
+                <img src="./src/assets/img/logo.png" id="logo" class="w-4.5" loading="lazy" alt="Pedro Benitez">
+                <p class="mb-[1px] text-xs font-medium">Pedro Benitez</p>
+            </div>
+            <div class="flex">
+                <p class="changeMode-back-text text-xs">© 2025 Pedro Benítez</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="./src/js/main.js"></script>
+    <script src="./src/js/p5.min.js"></script>
+    <script src="./src/js/vanta.topology.min.js"></script>
+</body>
+
+</html>
