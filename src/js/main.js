@@ -150,7 +150,10 @@ function updateModeStyles(isChecked) {
     const colorBit = localStorage.getItem("colorBit");
     const colorHex = localStorage.getItem("colorHex");
 
-    createVanta(colorBit, colorBackground);
+    if (window.innerWidth > 768) {
+        createVanta(colorBit, colorBackground);
+    }
+    
     changeLogoColor(colorText);
     changeTextColor(colorHex);
     toggleModeClass(isChecked);
