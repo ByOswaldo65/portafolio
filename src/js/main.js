@@ -99,6 +99,9 @@ function createVanta(colorBit, colorMode) {
         scaleMobile: 1.00,
         color: parseInt(colorBit),
         backgroundColor: parseInt(colorMode),
+        points: 2.0,
+        maxDistance: 15.0,
+        spacing: 18.0,
     });
 }
 
@@ -148,7 +151,6 @@ function updateModeStyles(isChecked) {
     const colorHex = localStorage.getItem("colorHex");
 
     createVanta(colorBit, colorBackground);
-
     changeLogoColor(colorText);
     changeTextColor(colorHex);
     toggleModeClass(isChecked);
