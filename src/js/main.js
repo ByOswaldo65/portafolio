@@ -68,8 +68,6 @@ function changeColor(event) {
     localStorage.setItem("colorHex", colorHex);
     localStorage.setItem("colorBit", colorBit);
 
-    vantaEffect && (vantaEffect.destroy(), vantaEffect = null);
-
     cleanBorder('.btnColor');
     newBorderColor($btnColor, colorSelected);
 
@@ -82,13 +80,15 @@ function changeMode() {
 
     localStorage.setItem("isDarkMode", isChecked.toString());
 
-    vantaEffect && (vantaEffect.destroy, vantaEffect = null);
-
     updateModeStyles(isChecked);
 }
 
 function createVanta(colorBit, colorMode) {
-    VANTA.TOPOLOGY({
+    if (vantaEffect && typeof vantaEffect.destroy === "function") {
+        vantaEffect.destroy();
+    }
+
+    vantaEffect = VANTA.TOPOLOGY({
         el: "#mainFondo",
         mouseControls: false,
         touchControls: false,
@@ -147,7 +147,7 @@ function updateModeStyles(isChecked) {
     const colorBit = localStorage.getItem("colorBit");
     const colorHex = localStorage.getItem("colorHex");
 
-    vantaEffect = createVanta(colorBit, colorBackground);
+    createVanta(colorBit, colorBackground);
 
     changeLogoColor(colorText);
     changeTextColor(colorHex);
